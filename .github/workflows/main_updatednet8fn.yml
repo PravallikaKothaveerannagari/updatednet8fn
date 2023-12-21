@@ -12,11 +12,6 @@ on:
 env:
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '8.0.x' # set this to the dotnet version to use
-  AZURE_APIM_RESOURCEGROUP: v-pravallika-mindtree
-  AZURE_APIM_SERVICENAME: updatednet8fn-apim
-  AZURE_APIM_API_ID: updatednet8fn
-  AZURE_APIM_RESOURCE_PATH: /
-  AZURE_APIM_SWAGGERURL: ''
 jobs:
   build-and-deploy:
     runs-on: windows-latest
@@ -45,5 +40,11 @@ jobs:
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C5C76E48BE7942428C83D73671DA1019 }}
    
-      - name: Import API into Azure API Management
-        run: az apim api import --path "${{ env.AZURE_APIM_RESOURCE_PATH }}" --resource-group ${{ env.AZURE_APIM_RESOURCEGROUP }} --service-name ${{ env.AZURE_APIM_SERVICENAME }} --api-id ${{ env.AZURE_APIM_API_ID }} --specification-format OpenApi --subscription-required false
+      - name: Import Function App to Azure API Management
+        uses: azure/api-management-import@v0.1.0
+        with:
+          apim-service-name: 'updatedapim'
+          resource-group-name: 'v-pravallika-mindtree'
+          api-name: 'MyApim'
+          api-display-name: 'myapim'
+          api-service-url: ''
