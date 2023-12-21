@@ -12,6 +12,11 @@ on:
 env:
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '8.0.x' # set this to the dotnet version to use
+  AZURE_APIM_RESOURCEGROUP: v-pravallika-mindtree
+  AZURE_APIM_SERVICENAME: updatednet8fn-apim
+  AZURE_APIM_API_ID: updatednet8fn
+  AZURE_APIM_RESOURCE_PATH: /
+  AZURE_APIM_SWAGGERURL: ''
 jobs:
   build-and-deploy:
     runs-on: windows-latest
