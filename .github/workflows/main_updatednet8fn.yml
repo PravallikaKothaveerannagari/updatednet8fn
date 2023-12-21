@@ -46,4 +46,4 @@ jobs:
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C5C76E48BE7942428C83D73671DA1019 }}
    
       - name: Import API into Azure API Management
-        run: az apim api import --path "${{ env.AZURE_APIM_RESOURCE_PATH }}" --resource-group ${{ env.AZURE_APIM_RESOURCEGROUP }} --service-name ${{ env.AZURE_APIM_SERVICENAME }} --api-id ${{ env.AZURE_APIM_API_ID }} --specification-url "${{ env.AZURE_APIM_SWAGGERURL }}" --specification-format OpenApi --subscription-required false
+        run: az apim api import --path "${{ env.AZURE_APIM_RESOURCE_PATH }}" --resource-group ${{ env.AZURE_APIM_RESOURCEGROUP }} --service-name ${{ env.AZURE_APIM_SERVICENAME }} --api-id ${{ env.AZURE_APIM_API_ID }} --specification-format OpenApi --subscription-required false
